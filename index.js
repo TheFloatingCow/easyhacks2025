@@ -4,6 +4,11 @@ let startMarker, endMarker;
 const apiKey = "AIzaSyCxWwT-kAXhrioTvdwVf1YflLJ7yxOdqgs"; // Replace with your actual API key
 
 async function initMap() {
+
+    let locationRadius = 5000; // Radius of locations from waypoints
+    let numberOfStops = 10; // Total number of stops
+    let waypointPickRate = 30; // Distance between waypoints on the route
+
     const defaultPosition = { lat: 49.2827, lng: -123.1207 };
 
     // Load Google Maps
@@ -162,15 +167,14 @@ async function initMap() {
     function findInterestingPlaces(encodedPolyline) {
         console.log("Finding interesting place");
         const decodedPath = google.maps.geometry.encoding.decodePath(encodedPolyline);
-        const waypoints = decodedPath.filter((_, index) => index % 30 === 0); // Pick every 30th point
-
+        const waypoints = decodedPath.filter((_, index) => index % waypointPickRate === 0); // Pick every n-th point
 
         waypoints.forEach((point) => {
 
             const request = {
                 location: point,
-                radius: 5000, // 5km search radius
-                types: ["tourist_attraction", "park", "museum", "cafe"], // Types of places
+                radius: locationRadius, // search radius from path
+                types: ["tourist_attraction", "park", "museum", "cafe", "amusement_park", "aquarium", "art_gallery", "zoo"], // Types of places
             };
 
             placesService.nearbySearch(request, (results, status) => {
