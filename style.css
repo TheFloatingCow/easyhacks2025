@@ -99,3 +99,16 @@ select{
     border-width: 2px;
     border-color: #ce218f;
 }
+#travelTime{
+    margin: 10px;
+    padding: 5px;
+    color: #702765;
+    font-weight: bold;
+    font-size: 20px;
+    background-color:#f9d9ee;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    
+
+}
