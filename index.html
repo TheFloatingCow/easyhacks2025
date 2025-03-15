@@ -2,7 +2,10 @@
 <html>
     <head>
         <title> Trip Planner</title>
-
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="module" src=""./index.js"></script>
     </head>
     <body>
         <header>
@@ -11,25 +14,25 @@
           <main>
             <form id="tripForm">
               <!-- Trip Type -->
+
+              <div class="form-section">
+                <h2>Trip Type</h2>
+                <label for="tripType">Select Trip Type:</label>
+                <select id="tripType" name="tripType" required>
+                  <option value="">--Choose an Option--</option>
+                  <option value="One-Way">One-Way</option>
+                  <option value="RoundTrip">Round Trip</option>
+                </select>
+              </div>
               <div class="form-section">
                 <h2>Trip Length</h2>
-                <label for="tripLength">Select Trip Type:</label>
+                <label for="tripLength">Select Trip Length:</label>
                 <select id="tripLength" name="tripLength" required>
                   <option value="">--Choose an Option--</option>
                   <option value="dayTrip">Day Trip</option>
                   <option value="roadTrip">Road Trip</option>
                 </select>
               </div>
-              <div class="form-section">
-                <h2>Trip Type</h2>
-                <label for="tripType">Select Trip Type:</label>
-                <select id="tripType" name="tripType" required>
-                  <option value="">--Choose an Option--</option>
-                  <option value="One-Way">Day Trip</option>
-                  <option value="RoundTrip">Road Trip</option>
-                </select>
-              </div>
-          
               <!-- Route Definition -->
               <div class="form-section">
                 <h2>Route Definition</h2>
@@ -43,7 +46,12 @@
                 <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
                 
               </div>
-          
+              <div id="questions"></div>
+          <script src="initial_info.js">
+            
+          </script>
+
+
               <!-- Driving Time -->
               <div class="form-section">
                 <h2>Driving Time</h2>
