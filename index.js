@@ -105,20 +105,20 @@ function getTripInfo() {
     const dayTripStops = document.getElementById('dayTripStops').value;
     const roadTripHours = document.getElementById('roadTripHours').value;
     const roadTripStops = document.getElementById('roadTripStops').value;
-  
-  
+
+
     const dayTripDiv = document.getElementById('dayTrip');
     const roadTripDiv = document.getElementById('roadTrip');
     if (tripLength === 'dayTrip') {
-      dayTripDiv.style.display = 'block';
-      roadTripDiv.style.display = 'none';
+        dayTripDiv.style.display = 'block';
+        roadTripDiv.style.display = 'none';
     } else if (tripLength === 'roadTrip') {
-      dayTripDiv.style.display = 'none';
-      roadTripDiv.style.display = 'block';
+        dayTripDiv.style.display = 'none';
+        roadTripDiv.style.display = 'block';
     } else {
-      dayTripDiv.style.display = 'none';
-      roadTripDiv.style.display = 'none';
+        dayTripDiv.style.display = 'none';
+        roadTripDiv.style.display = 'none';
     }
     return { tripType, tripLength, startingLocation, destination, days, dayTripHours, dayTripStops, roadTripHours, roadTripStops };
     //console.log(tripType, tripLength, startingLocation, destination, days, dayTripHours, dayTripStops, roadTripHours, roadTripStops);
-  }
+}
