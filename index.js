@@ -54,6 +54,14 @@ async function initMap() {
     placeMarker(startAutocomplete, startMarker);
     placeMarker(endAutocomplete, endMarker);
 
+    // Adjust map bounds to fit both markers
+    function fitBounds() {
+        const bounds = new google.maps.LatLngBounds();
+        if (startMarker.getPosition()) bounds.extend(startMarker.getPosition());
+        if (endMarker.getPosition()) bounds.extend(endMarker.getPosition());
+        if (!bounds.isEmpty()) map.fitBounds(bounds);
+    }
+
     /*
     // Add marker on click
     google.maps.event.addListener(map, "click", (event) => {
