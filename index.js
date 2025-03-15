@@ -178,7 +178,16 @@ async function initMap() {
         const decodedPath = google.maps.geometry.encoding.decodePath(encodedPolyline);
         const waypoints = decodedPath.filter((_, index) => index % waypointPickRate === 0); // Pick every n-th point
 
-        waypoints.forEach((point) => {
+        console.log(numberOfStops);
+
+        // Remove duplicates
+        const uniqueWaypoints = [...new Set(waypoints.map(point => JSON.stringify(point)))].map(point => JSON.parse(point));
+
+        // Select numberOfStops waypoints
+        const shuffled = uniqueWaypoints.sort(() => 0.5 - Math.random());
+        let randomWaypoints = shuffled.slice(0, numberOfStops);
+
+        randomWaypoints.forEach((point) => {
 
             const request = {
                 location: point,
