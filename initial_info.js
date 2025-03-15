@@ -9,8 +9,6 @@ function getTripInfo() {
   const roadTripHours = document.getElementById('roadTripHours').value;
   const roadTripStops = document.getElementById('roadTripStops').value;
 
-//  const questions = document.getElementById('questions');
-//  questions.innerHTML = ''; // Clear previous questions
 
   const dayTripDiv = document.getElementById('dayTrip');
   const roadTripDiv = document.getElementById('roadTrip');
@@ -24,8 +22,12 @@ function getTripInfo() {
     dayTripDiv.style.display = 'none';
     roadTripDiv.style.display = 'none';
   }
+  return { tripType, tripLength, startingLocation, destination, days, dayTripHours, dayTripStops, roadTripHours, roadTripStops };
     console.log(tripType, tripLength, startingLocation, destination, days, dayTripHours, dayTripStops, roadTripHours, roadTripStops);
 }
+
+//  const questions = document.getElementById('questions');
+//  questions.innerHTML = ''; // Clear previous questions
   /*if (tripLength === 'dayTrip') {
     //askDayTripInfo();
     //console.log(hours, stops);
