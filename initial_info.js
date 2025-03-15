@@ -16,7 +16,6 @@ function getTripInfo() {
     console.log(days, hours, stops);
   }
   
-  
 }
 
 function askDayTripInfo() {
