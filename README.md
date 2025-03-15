@@ -9,3 +9,4 @@ Our easyhacks 2025 project
 
 ❌ means something doesn't work yet
 ⌛ Travel time currently in seconds
+❗ Works best for trips like Vancouver-Seattle
