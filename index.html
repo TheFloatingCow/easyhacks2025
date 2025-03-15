@@ -16,6 +16,12 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="manifest" href="/site.webmanifest" />
+  <script>
+    (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r, "places"] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
+      key: "AIzaSyCxWwT-kAXhrioTvdwVf1YflLJ7yxOdqgs",
+      v: "beta"
+    });
+  </script>
 </head>
 
 <body>
@@ -68,15 +74,15 @@
           <button type="button" onclick="getTripInfo()">next!</button>
           <div id="dayTrip">
             <h2>Day Trip</h2>
-            
+
             <label for="dayTripHours">How many hours would you like to drive?</label>
             <input type="number" id="dayTripHours" name="dayTripHours" min="1" max="24" required>
             <br>
-            
+
             <label for="dayTripStops">How many stops would you like to make?</label>
             <input type="number" id="dayTripStops" name="dayTripStops" min="1" max="10" required>
             <br>
-           
+
             <button type="button" onclick="getTripInfo()">submit!</button>
           </div>
 
@@ -86,11 +92,11 @@
             <label for="days">How many days would you like to travel?</label>
             <input type="number" id="days" name="days" min="1" max="30" required>
             <br>
-            
+
             <label for="roadTripHours">How many hours would you like to drive per day?</label>
             <input type="number" id="roadTripHours" name="roadTripHours" min="1" max="24" required>
             <br>
-            
+
             <label for="roadTripStops">How many stops would you like to make in total?</label>
             <input type="number" id="roadTripStops" name="roadTripStops" min="1" max="10" required>
             <br>
@@ -99,7 +105,7 @@
           </div>
         </form>
         <div id="questions"></div>
-        <script src="initial_info.js">
+        <script src="index.js">
         </script>
 
         </form>
@@ -109,12 +115,7 @@
         <!--The div element for the map -->
         <div id="map"></div>
 
-        <script>
-          (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r, "places"] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
-            key: "AIzaSyCxWwT-kAXhrioTvdwVf1YflLJ7yxOdqgs",
-            v: "beta"
-          });
-        </script>
+
       </div>
 
     </div>
