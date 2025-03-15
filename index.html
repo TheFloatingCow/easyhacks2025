@@ -20,61 +20,67 @@
     <h1>Trip Planner</h1>
   </header>
 
-  <!--The div element for the map -->
-  <div id="map"></div>
-
-  <script>
-    (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
-      key: "AIzaSyCxWwT-kAXhrioTvdwVf1YflLJ7yxOdqgs",
-      //key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
-      v: "beta"
-    });
-  </script>
-
   <main>
-    <form id="tripForm">
-      <!-- Trip Type -->
+    <div class="row">
+      <div class="column"> <!--LEFT COLUMN --------------------->
 
-      <div class="form-section">
-        <h2>Trip Type</h2>
-        <label for="tripType">Select Trip Type:</label>
-        <select id="tripType" name="tripType" required>
-          <option value="">--Choose an Option--</option>
-          <option value="One-Way">One-Way</option>
-          <option value="RoundTrip">Round Trip</option>
-        </select>
+        <form id="tripForm">
+          <!-- Trip Type -->
+
+          <div class="form-section">
+            <h2>Trip Type</h2>
+            <label for="tripType">Select Trip Type:</label>
+            <select id="tripType" name="tripType" required>
+              <option value="">--Choose an Option--</option>
+              <option value="One-Way">One-Way</option>
+              <option value="RoundTrip">Round Trip</option>
+            </select>
+          </div>
+          <div class="form-section">
+            <h2>Trip Length</h2>
+            <label for="tripLength">Select Trip Length:</label>
+            <select id="tripLength" name="tripLength" required>
+              <option value="">--Choose an Option--</option>
+              <option value="dayTrip">Day Trip</option>
+              <option value="roadTrip">Road Trip</option>
+            </select>
+          </div>
+          <!-- Route Definition -->
+          <div class="form-section">
+            <h2>Route Definition</h2>
+
+            <!-- Starting location -->
+            <label for="startingLocation">Starting Location:</label>
+            <input type="text" id="startingLocation" name="startingLocation" placeholder="Enter starting location"
+              required>
+
+            <!-- Destination -->
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
+
+          </div>
+          <button type="button" onclick="getTripInfo()">Submit</button>
+        </form>
+        <div id="questions"></div>
+        <script src="initial_info.js">
+        </script>
+
+        </form>
       </div>
-      <div class="form-section">
-        <h2>Trip Length</h2>
-        <label for="tripLength">Select Trip Length:</label>
-        <select id="tripLength" name="tripLength" required>
-          <option value="">--Choose an Option--</option>
-          <option value="dayTrip">Day Trip</option>
-          <option value="roadTrip">Road Trip</option>
-        </select>
+
+      <div class="column"> <!--RIGHT COLUMN ------------------->
+        <!--The div element for the map -->
+        <div id="map"></div>
+
+        <script>
+          (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
+            key: "AIzaSyCxWwT-kAXhrioTvdwVf1YflLJ7yxOdqgs",
+            v: "beta"
+          });
+        </script>
       </div>
-      <!-- Route Definition -->
-      <div class="form-section">
-        <h2>Route Definition</h2>
-
-        <!-- Starting location -->
-        <label for="startingLocation">Starting Location:</label>
-        <input type="text" id="startingLocation" name="startingLocation" placeholder="Enter starting location" required>
-
-        <!-- Destination -->
-        <label for="destination">Destination:</label>
-        <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
-
-      </div>
-      <button type="button" onclick="getTripInfo()">Submit</button>
-    </form>
-    <div id="questions"></div>
-    <script src="initial_info.js">
-    </script>
-
-
-
-    </form>
+      
+    </div>
 
   </main>
 

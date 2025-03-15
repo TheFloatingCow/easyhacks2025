@@ -1,6 +1,10 @@
 #map {
     height: 400px;  /* Height is 400 pixels */
-    width: 100%;    /* Width is the width of the web page */
+    width: 100%;    /* Width is the width of the div */
+}
+
+* {
+    box-sizing: border-box;
 }
 
 html,
@@ -17,4 +21,16 @@ body {
     /* color settings*/
     background-color: #baf0bc;
     color: #120a3f;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
