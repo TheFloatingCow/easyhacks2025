@@ -16,6 +16,9 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="manifest" href="/site.webmanifest" />
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxWwT-kAXhrioTvdwVf1YflLJ7yxOdqgs&loading=async&libraries=places&callback=initMap">
+    </script>
 </head>
 
 <body>
@@ -50,7 +53,7 @@
               <option value="roadTrip">Road Trip</option>
             </select>
           </div>
-          
+
           <!-- Route Definition -->
           <div class="form-section">
             <h2>Route Definition</h2>
@@ -68,15 +71,15 @@
           <button type="button" onclick="getTripInfo()">next!</button>
           <div id="dayTrip">
             <h2>Day Trip</h2>
-            
+
             <label for="hours">How many hours would you like to drive?</label>
             <input type="number" id="hours" name="dayTripHours" min="1" max="24" required>
             <br>
-            
+
             <label for="stops">How many stops would you like to make?</label>
             <input type="number" id="stops" name="dayTripStops" min="1" max="10" required>
             <br>
-           
+
             <button type="button" onclick="getDayTripInfo()">submit!</button>
           </div>
 
@@ -86,11 +89,11 @@
             <label for="days">How many days would you like to travel?</label>
             <input type="number" id="days" name="days" min="1" max="30" required>
             <br>
-            
+
             <label for="hours">How many hours would you like to drive per day?</label>
             <input type="number" id="hours" name="dayTripHours" min="1" max="24" required>
             <br>
-            
+
             <label for="stops">How many stops would you like to make in total?</label>
             <input type="number" id="stops" name="dayTripStops" min="1" max="10" required>
             <br>
