@@ -1,8 +1,8 @@
-function getTripInfo (){
-    const tripType = document.getElementById('tripType').value;
-    const tripLength = document.getElementById('tripLength').value;
-    const startingLocation = document.getElementById('startingLocation').value;
-    const destination = document.getElementById('destination').value;
+function getTripInfo() {
+  const tripType = document.getElementById('tripType').value;
+  const tripLength = document.getElementById('tripLength').value;
+  const startingLocation = document.getElementById('startingLocation').value;
+  const destination = document.getElementById('destination').value;
 
     const questions = document.getElementById('questions');
     questions.innerHTML = ''; // Clear previous questions
