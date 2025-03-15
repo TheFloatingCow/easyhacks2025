@@ -1,5 +1,7 @@
 // Initialize and add the map
 let map;
+let directionsRenderer;
+let directionsService;
 
 async function initMap() {
     // The location of Vancouver
@@ -15,6 +17,10 @@ async function initMap() {
         center: defaultPosition,
         mapId: "TRIP_PLANNER_ID",
     });
+
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
 
     // Search box element
     const startInput = document.getElementById("startingLocation");
@@ -35,7 +41,7 @@ async function initMap() {
     });
 
     // Place start and end markers
-    function placeMarker(autocomplete, marker) {
+    function placeMarker(autocomplete, marker, isStart) {
         autocomplete.addListener("place_changed", () => {
             const place = autocomplete.getPlace();
             if (!place.geometry) {
@@ -47,12 +53,13 @@ async function initMap() {
             map.setCenter(place.geometry.location);
             map.setZoom(15);
             fitBounds();
+            calculateAndDisplayRoute();
         })
     }
 
     // Event listeners
-    placeMarker(startAutocomplete, startMarker);
-    placeMarker(endAutocomplete, endMarker);
+    placeMarker(startAutocomplete, startMarker, true);
+    placeMarker(endAutocomplete, endMarker, false);
 
     // Adjust map bounds to fit both markers
     function fitBounds() {
@@ -61,6 +68,26 @@ async function initMap() {
         if (endMarker.getPosition()) bounds.extend(endMarker.getPosition());
         if (!bounds.isEmpty()) map.fitBounds(bounds);
     }
+
+    function calculateAndDisplayRoute() {
+        if (!startMarker.getPosition() || !endMarker.getPosition()) return;
+
+        const request = {
+            origin: startMarker.getPosition(),
+            destination: endMarker.getPosition(),
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+
+        directionsService.route(request, (result, status) => {
+            if (status === "OK") {
+                directionsRenderer.setDirections(result);
+            } else {
+                alert("Could not find a route between these locations.");
+            }
+        }
+    );
+    }
+
 
     /*
     // Add marker on click
