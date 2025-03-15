@@ -23,7 +23,7 @@ function getTripInfo() {
     roadTripDiv.style.display = 'none';
   }
   return { tripType, tripLength, startingLocation, destination, days, dayTripHours, dayTripStops, roadTripHours, roadTripStops };
-    console.log(tripType, tripLength, startingLocation, destination, days, dayTripHours, dayTripStops, roadTripHours, roadTripStops);
+  console.log(tripType, tripLength, startingLocation, destination, days, dayTripHours, dayTripStops, roadTripHours, roadTripStops);
 }
 
 //  const questions = document.getElementById('questions');
