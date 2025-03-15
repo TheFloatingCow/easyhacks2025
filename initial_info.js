@@ -3,22 +3,24 @@ function getTripInfo() {
   const tripLength = document.getElementById('tripLength').value;
   const startingLocation = document.getElementById('startingLocation').value;
   const destination = document.getElementById('destination').value;
+  const days = document.getElementById('days').value;
+  const hours = document.getElementById('hours').value;
+  const stops = document.getElementById('stops').value;
 
   const questions = document.getElementById('questions');
   questions.innerHTML = ''; // Clear previous questions
   console.log(tripType, tripLength, startingLocation, destination);
   if (tripLength === 'dayTrip') {
-    askDayTripInfo();
-    console.log(hours, stops);
+    //askDayTripInfo();
+    //console.log(hours, stops);
   }
   else {
-    askRoadTripInfo();
-    console.log(days, hours, stops);
+    //askRoadTripInfo();
+    //console.log(days, hours, stops);
   }
   
-  
 }
-
+/*
 function askDayTripInfo() {
   const questions = document.getElementById('questions');
   questions.innerHTML = ''; // Clear previous questions
@@ -128,3 +130,4 @@ function getDetails() {
   const stops = document.getElementById('stops').value;
   const bookedAccomodation = document.getElementById('bookedAccomodation').value;
 }
+*/
