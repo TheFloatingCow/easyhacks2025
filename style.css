@@ -4,7 +4,7 @@
     border-radius: 5%;
     
 }
-.map{
+.map {
     border-width: 5px;
     border-color: #073012;
 }
@@ -47,7 +47,8 @@ body {
     display: table;
     clear: both;
 }
-h1{
+
+h1 {
     font-size: 40px;
     font-weight: bold;
     color: #ce218f;
@@ -75,7 +76,7 @@ button {
     border-radius: 10px;
 }
 
-h2{
+h2 {
     color: #295f37;
     text-shadow: #155827, 2px 2px;
     background-color: #baf0bc;
@@ -83,31 +84,32 @@ h2{
     border-radius: 10px;
 }
 
-label{
+label {
     color: #14702d;
     padding: 10px;
 }
-input{
+
+input {
     background-color: #f9d9ee;
     border-radius: 10px;
     border-width: 2px;
     border-color: #ce218f;
 }
-select{
+
+select {
     background-color: #f9d9ee;
     border-radius: 10px;
     border-width: 2px;
     border-color: #ce218f;
 }
-#travelTime{
+
+#travelTime {
     margin: 10px;
     padding: 5px;
     color: #702765;
     font-weight: bold;
     font-size: 20px;
-    background-color:#f9d9ee;
     width: fit-content;
     height: fit-content;
     border-radius: 10px;
-
 }
