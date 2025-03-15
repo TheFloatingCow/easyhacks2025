@@ -4,13 +4,29 @@ function getTripInfo() {
   const startingLocation = document.getElementById('startingLocation').value;
   const destination = document.getElementById('destination').value;
   const days = document.getElementById('days').value;
-  const hours = document.getElementById('hours').value;
-  const stops = document.getElementById('stops').value;
+  const dayTripHours = document.getElementById('dayTripHours').value;
+  const dayTripStops = document.getElementById('dayTripStops').value;
+  const roadTripHours = document.getElementById('roadTripHours').value;
+  const roadTripStops = document.getElementById('roadTripStops').value;
 
-  const questions = document.getElementById('questions');
-  questions.innerHTML = ''; // Clear previous questions
-  console.log(tripType, tripLength, startingLocation, destination);
+//  const questions = document.getElementById('questions');
+//  questions.innerHTML = ''; // Clear previous questions
+
+  const dayTripDiv = document.getElementById('dayTrip');
+  const roadTripDiv = document.getElementById('roadTrip');
   if (tripLength === 'dayTrip') {
+    dayTripDiv.style.display = 'block';
+    roadTripDiv.style.display = 'none';
+  } else if (tripLength === 'roadTrip') {
+    dayTripDiv.style.display = 'none';
+    roadTripDiv.style.display = 'block';
+  } else {
+    dayTripDiv.style.display = 'none';
+    roadTripDiv.style.display = 'none';
+  }
+    console.log(tripType, tripLength, startingLocation, destination, days, dayTripHours, dayTripStops, roadTripHours, roadTripStops);
+}
+  /*if (tripLength === 'dayTrip') {
     //askDayTripInfo();
     //console.log(hours, stops);
   }
@@ -19,7 +35,7 @@ function getTripInfo() {
     //console.log(days, hours, stops);
   }
   
-}
+}*/
 /*
 function askDayTripInfo() {
   const questions = document.getElementById('questions');
