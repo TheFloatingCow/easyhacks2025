@@ -1,5 +1,5 @@
 #map {
-    height: 800px;  /* Height is 400 pixels */
+    height: 750px;  /* Height is 400 pixels */
     width: 100%;    /* Width is the width of the div */
     border-radius: 5%;
     
@@ -17,7 +17,7 @@ html,
 body {
     /* margin settings*/
     height: 100%;
-    margin: 5%;
+    margin: 1%;
     padding: 0;
     margin-top: 0%;
 
@@ -98,4 +98,16 @@ select{
     border-radius: 10px;
     border-width: 2px;
     border-color: #ce218f;
+}
+#travelTime{
+    margin: 10px;
+    padding: 5px;
+    color: #702765;
+    font-weight: bold;
+    font-size: 20px;
+    background-color:#f9d9ee;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+
 }

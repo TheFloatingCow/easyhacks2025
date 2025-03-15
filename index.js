@@ -35,8 +35,22 @@ async function initMap() {
     const endAutocomplete = new google.maps.places.Autocomplete(endInput);
 
     // Create markers
-    startMarker = new google.maps.Marker({ map: map });
-    endMarker = new google.maps.Marker({ map: map });
+    startMarker = new google.maps.Marker({ map: map, icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: "Red",   // Color of the circle
+        fillOpacity: 0.7,
+        strokeColor: "Violet", // Stroke color
+        strokeWeight: 2,
+        scale: 12 
+    } });
+    endMarker = new google.maps.Marker({ map: map, icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: "Blue",   // Color of the circle
+        fillOpacity: 0.7,
+        strokeColor: "Violet", // Stroke color
+        strokeWeight: 2,
+        scale: 12 
+    } });
 
     // Store polyline to display the route
     let routePolyline = null;
@@ -177,6 +191,10 @@ async function initMap() {
         console.log("Finding interesting place");
         const decodedPath = google.maps.geometry.encoding.decodePath(encodedPolyline);
         const waypoints = decodedPath.filter((_, index) => index % waypointPickRate === 0); // Pick every n-th point
+        
+        // const icons = {
+        // "cafe": "cafe_icon1.png"
+        // };
 
         console.log(numberOfStops);
 
