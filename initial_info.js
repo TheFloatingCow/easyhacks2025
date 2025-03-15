@@ -30,6 +30,7 @@ function askDayTripInfo() {
   questions.innerHTML += '<button type="button" onclick="getDayTripInfo()">Submit</button>';
 
 }
+
 function getDayTripInfo() {
   const hours = document.getElementById('hours').value;
   const stops = document.getElementById('stops').value;
@@ -59,6 +60,7 @@ function askRoadTripInfo() {
   questions.innerHTML += '<button type="button" onclick="getRoadTripInfo()">Submit</button>';
 
 }
+
 function getRoadTripInfo() {
   const days = document.getElementById('days').value;
   const accomodation = document.getElementById('accomodation').value;
@@ -66,6 +68,7 @@ function getRoadTripInfo() {
   const stopType = document.getElementById('stopType').value;
   askDetails();
 }
+
 function askDetails() {
   const questions = document.getElementById('questions');
 
