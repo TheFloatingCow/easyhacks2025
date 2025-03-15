@@ -6,18 +6,23 @@ function getTripInfo() {
 
   const questions = document.getElementById('questions');
   questions.innerHTML = ''; // Clear previous questions
+  console.log(tripType, tripLength, startingLocation, destination);
   if (tripLength === 'dayTrip') {
     askDayTripInfo();
+    console.log(hours, stops);
   }
   else {
     askRoadTripInfo();
+    console.log(days, hours, stops);
   }
+  
+  
 }
 
 function askDayTripInfo() {
   const questions = document.getElementById('questions');
   questions.innerHTML = ''; // Clear previous questions
-  questions.innerHTML = '<h3>Day Trip</h3>';
+  questions.innerHTML = '<h2>Day Trip</h2>';
   // # of hours to drive
   questions.innerHTML += '<label for="hours">How many hours would you like to drive?</label>';
   questions.innerHTML += '<input type="number" id="hours" name="dayTripHours" min="1" max="24" required>';
@@ -39,7 +44,7 @@ function getDayTripInfo() {
 function askRoadTripInfo() {
   const questions = document.getElementById('questions');
   questions.innerHTML = ''; // Clear previous questions
-  questions.innerHTML = '<h3>Road Trip</h3>';
+  questions.innerHTML = '<h2>Road Trip</h2>';
   // # of days
   questions.innerHTML += '<label for="days">How many days would you like to travel?</label>';
   questions.innerHTML += '<input type="number" id="days" name="days" min="1" max="30" required>';
@@ -71,6 +76,8 @@ function askRoadTripInfo() {
 
 function getRoadTripInfo() {
   const days = document.getElementById('days').value;
+  const hours = document.getElementById('hours').value;
+  const stops = document.getElementById('stops').value;
   //const accomodation = document.getElementById('accomodation').value;
   //const drivingSplit = document.getElementById('drivingSplit').value;
   //const stopType = document.getElementById('stopType').value;
