@@ -192,7 +192,6 @@ async function initMap() {
     }
 
     function findInterestingPlaces(encodedPolyline) {
-        console.log("Finding interesting place");
         const decodedPath = google.maps.geometry.encoding.decodePath(encodedPolyline);
         const waypoints = decodedPath.filter((_, index) => index % waypointPickRate === 0); // Pick every n-th point
 
