@@ -9,12 +9,16 @@ async function initMap() {
     // Load Google Maps
     //@ts-ignore
     const { Map } = await google.maps.importLibrary("maps");
+    //@ts-ignore
+    const { PlacesService } = await google.maps.importLibrary("places");
 
     map = new Map(document.getElementById("map"), {
         zoom: 2,
         center: defaultPosition,
         mapId: "TRIP_PLANNER_ID",
     });
+
+    placesService = new PlacesService(map);
 
     // Search box elements
     const startInput = document.getElementById("startingLocation");
@@ -109,6 +113,7 @@ async function initMap() {
                 const travelTime = route.duration;
                 console.log("Travel Time Object:", travelTime); // Log the duration object
                 displayTravelTime(travelTime);
+                findInterestingPlaces(route.polyline.encodedPolyline);
             } else {
                 alert("No route found.");
             }
@@ -138,6 +143,42 @@ async function initMap() {
     function displayTravelTime(duration) {
         const travelTimeElement = document.getElementById("travelTime");
         travelTimeElement.textContent = `Travel Time: ${duration.text || duration}`; // Access the correct property
+    }
+
+    // Add marker
+    function addPlaceMarker(place) {
+        new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            title: place.name,
+            icon: {
+                url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+            }
+        });
+
+        console.log("Added place:", place.name);
+    }
+
+    function findInterestingPlaces(encodedPolyline) {
+        console.log("Finding interesting place");
+        const decodedPath = google.maps.geometry.encoding.decodePath(encodedPolyline);
+        const waypoints = decodedPath.filter((_, index) => index % 30 === 0); // Pick every 30th point
+
+
+        waypoints.forEach((point) => {
+
+            const request = {
+                location: point,
+                radius: 5000, // 5km search radius
+                types: ["tourist_attraction", "park", "museum", "cafe"], // Types of places
+            };
+
+            placesService.nearbySearch(request, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
+                    addPlaceMarker(results[0]);
+                }
+            });
+        });
     }
 }
 
