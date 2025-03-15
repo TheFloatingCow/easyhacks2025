@@ -1,7 +1,7 @@
 // Initialize and add the map
 let map;
 let startMarker, endMarker;
-const apiKey = "YOUR_GOOGLE_MAPS_API_KEY"; // Replace with your actual API key
+const apiKey = "AIzaSyCxWwT-kAXhrioTvdwVf1YflLJ7yxOdqgs"; // Replace with your actual API key
 
 async function initMap() {
     const defaultPosition = { lat: 49.2827, lng: -123.1207 };
