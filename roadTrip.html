@@ -1,0 +1,77 @@
+  <!-- Driving Time -->
+  <div class="form-section">
+    <h2>Driving Time</h2>
+    <label for="driveTime">Would you like to drive the same amount everyday?</label>
+    <select id="driveTime" name="driveTime" required>
+      <option value="">--Choose an Option--</option>
+      <option value=1>Yes</option>
+      <option value=0>No</option>
+    </select>
+    <br>
+    <!-- Fixed Driving Time -->
+    <label for="fixedDrivingTime">How many hours would you like to drive per day?</label>
+    <input type="number" id="fixedDrivingTime" name="fixedDrivingTime" placeholder="Enter number of hours">
+    <br>
+
+    <!-- Variable Driving Time -->
+    <label for="variableDrivingTime"> How many hours would you like to drive each day?</label><br>
+    <label for="variableDrivingTime">Day 1:</label>
+    <input type="number" id="variableDrivingTime" name="variableDrivingTimeDay1"
+      placeholder="Enter number of hours">
+    <br>
+    <label for="variableDrivingTime">Day 2:</label>
+    <input type="number" id="variableDrivingTime" name="variableDrivingTimeDay2"
+      placeholder="Enter number of hours">
+  </div>
+
+  <!-- Stops -->
+  <div class="form-section">
+    <h2>Stops</h2>
+    <label for="stopType">Would you like to define your stops?</label>
+    <select id="stopType" name="stopType" required>
+      <option value="">--Choose an Option--</option>
+      <option value="fixed">by Number of stops per day</option>
+      <option value="variable">same number of stops everyday</option>
+      <option value="total">a total number of stops in the whole trip</option>
+    </select>
+    <br>
+
+    <!-- Total Number of Stops -->
+    <label for="totalStops">Total Number of Stops:</label>
+    <input type="number" id="totalStops" name="totalStops" placeholder="Enter total number of stops"><br>
+
+    <!-- Fixed Number of Stops -->
+    <label for="fixedStopsPerDay">Fixed Number of Stops (stops/day):</label>
+    <input type="number" id="fixedStopsPerDay" name="fixedStopsPerDay" placeholder="Enter fixed stops/day"><br>
+
+    <!-- Variable Number of Stops -->
+    <label for="variableStopsPerDay">How many stops would you like to make each day?</label> <br>
+    <label for="variableStopsPerDay">Day 1:</label>
+    <input type="number" id="variableStopsPerDay" name="variableStopsPerDayDay1"
+      placeholder="Enter number of stops">
+    <br>
+    <label for="variableStopsPerDay">Day 2:</label>
+    <input type="number" id="variableStopsPerDay" name="variableStopsPerDayDay2"
+      placeholder="Enter number of stops">
+
+  </div>
+
+  <!-- Nightly Stays -->
+  <div class="form-section">
+    <h2>Nightly Stay</h2>
+    <label for="accomodation">Do you have accomodation booked for your trip?</label>
+    <select id="accomodation" name="accomodation" required>
+      <option value="">--Choose an Option--</option>
+      <option value=1>Yes</option>
+      <option value=0>No</option>
+    </select>
+    <br>
+
+    <!-- Nightly Stays -->
+    <label for="nightStayList">Where are you staying each night? </Label> <br>
+    <label for="nightStayList">Day 1:</label>
+    <input type="text" id="nightStayList" name="nightStayListDay1" placeholder="Enter name of accomodation">
+    <br>
+    <label for="nightStayList">Day 2:</label>
+    <input type="text" id="nightStayList" name="nightStayListDay2" placeholder="Enter name of accomodation">
+  </div>
