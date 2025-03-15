@@ -14,6 +14,7 @@ async function initMap() {
         zoom: 2,
         center: defaultPosition,
         mapId: "TRIP_PLANNER_ID",
+        streetViewControl: false,
     });
 
     // Search box element
