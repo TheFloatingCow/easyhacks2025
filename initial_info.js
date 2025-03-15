@@ -67,6 +67,8 @@ function getRoadTripInfo() {
     askDetails();
 }
 function askDetails() {
+  const questions = document.getElementById('questions');
+  
   if (drivingSplit === 'yes') {
     questions.innerHTML += '<label for="hours">How many hours would you like to drive each day?</label>';
     questions.innerHTML += '<input type="number" id="hours" name="hours" min="1" max="24" required>';

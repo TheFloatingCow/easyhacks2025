@@ -1,15 +1,13 @@
 #map {
-    height: 400px;
-    /* Height is 400 pixels */
-    width: 100%;
-    /* Width is the width of the web page */
+    height: 400px;  /* Height is 400 pixels */
+    width: 100%;    /* Width is the width of the web page */
 }
 
 html,
 body {
     /* margin settings*/
     height: 100%;
-    margin: 50px;
+    margin: 5%;
     padding: 0;
 
     /* font settings*/
@@ -19,6 +17,4 @@ body {
     /* color settings*/
     background-color: #baf0bc;
     color: #120a3f;
-
-
 }
