@@ -27,7 +27,7 @@ function askDayTripInfo() {
   questions.innerHTML += '<input type="number" id="stops" name="dayTripStops" min="1" max="10" required>';
   questions.innerHTML += '<br>';
   // submit button
-  questions.innerHTML += '<button type="button" onclick="getDayTripInfo()">Submit</button>';
+  questions.innerHTML += '<button type="button" onclick="getDayTripInfo()">next!</button>';
 
 }
 
@@ -57,7 +57,7 @@ function askRoadTripInfo() {
   questions.innerHTML += '<select id="stopType" name="stopType" required> <option value="">--Choose an Option--</option> <option value="variable">A different number of stops each day.</option><option value="fixed"> The same number of stops every day</option><option value="total">A total number of stops in the whole trip</option></select>';
   questions.innerHTML += '<br>';
   // submit button
-  questions.innerHTML += '<button type="button" onclick="getRoadTripInfo()">Submit</button>';
+  questions.innerHTML += '<button type="button" onclick="getRoadTripInfo()">next!</button>';
 
 }
 
@@ -106,7 +106,7 @@ function askDetails() {
     }
   }
   // submit button
-  questions.innerHTML += '<button type="button" onclick="getDetails()">Submit</button>';
+  questions.innerHTML += '<button type="button" onclick="getDetails()">Submit!</button>';
 }
 function getDetails() {
   const hours = document.getElementById('hours').value;
