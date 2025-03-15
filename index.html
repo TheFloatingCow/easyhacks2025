@@ -26,14 +26,22 @@
 
 <body>
 
-  <header>
-    <h1>Trip Planner</h1>
-  </header>
+
 
   <main>
     <div class="row">
       <div class="column"> <!--LEFT COLUMN --------------------->
+        <header>
+          <table>
+            <tr>
+              <img style="width: 25%" src=".\road-trip-car-png-image.avif" alt="clip art">
+              <h1>Trip Planner</h1>
+            </tr>
 
+
+          </table>
+
+        </header>
         <form id="tripForm">
           <!-- Trip Type -->
 
@@ -60,47 +68,84 @@
           <!-- Route Definition -->
           <div class="form-section">
             <h2>Route Definition</h2>
+            <div class="row">
+              <table>
+                <tr><!-- Starting location -->
+                  <td>
+                    <label for="startingLocation">Starting Location:</label>
+                  </td>
+                  <td>
+                    <input type="text" id="startingLocation" name="startingLocation"
+                      placeholder="Enter starting location" required>
+                  </td>
+                </tr>
+                <tr><!-- Destination -->
+                  <td>
+                    <label for="destination">Destination:</label>
 
-            <!-- Starting location -->
-            <label for="startingLocation">Starting Location:</label>
-            <input type="text" id="startingLocation" name="startingLocation" placeholder="Enter starting location"
-              required>
+                  </td>
+                  <td>
+                    <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
+                  </td>
+                </tr>
+              </table>
 
-            <!-- Destination -->
-            <label for="destination">Destination:</label>
-            <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
-
+            </div>
           </div>
           <button type="button" onclick="getTripInfo()">next!</button>
           <div id="dayTrip">
             <h2>Day Trip</h2>
-
-            <label for="dayTripHours">How many hours would you like to drive?</label>
-            <input type="number" id="dayTripHours" name="dayTripHours" min="1" max="24" required>
-            <br>
-
-            <label for="dayTripStops">How many stops would you like to make?</label>
-            <input type="number" id="dayTripStops" name="dayTripStops" min="1" max="10" required>
-            <br>
-
-            <button type="button" onclick="getTripInfo()">submit!</button>
+<table>
+  <tr>
+    <td>
+<label for="dayTripHours">How many hours would you like to drive?</label>
+    </td>
+    <td>
+<input type="number" id="dayTripHours" name="dayTripHours" min="1" max="24" required>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<label for="dayTripStops">How many stops would you like to make?</label>
+    </td>
+    <td>
+      <input type="number" id="dayTripStops" name="dayTripStops" min="1" max="10" required>
+    </td>
+  </tr>
+</table>
+            
+                        <button type="button" onclick="getTripInfo()">submit!</button>
           </div>
 
           <div id="roadTrip">
             <h2>Road Trip</h2>
-
-            <label for="days">How many days would you like to travel?</label>
-            <input type="number" id="days" name="days" min="1" max="30" required>
-            <br>
-
-            <label for="roadTripHours">How many hours would you like to drive per day?</label>
-            <input type="number" id="roadTripHours" name="roadTripHours" min="1" max="24" required>
-            <br>
-
-            <label for="roadTripStops">How many stops would you like to make in total?</label>
-            <input type="number" id="roadTripStops" name="roadTripStops" min="1" max="10" required>
-            <br>
-
+<table>
+  <tr>
+    <td>
+<label for="days">How many days would you like to travel?</label>
+    </td>
+    <td>
+<input type="number" id="days" name="days" min="1" max="30" required>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<label for="roadTripHours">How many hours would you like to drive per day?</label>
+    </td>
+    <td>
+       <input type="number" id="roadTripHours" name="roadTripHours" min="1" max="24" required>
+    </td>
+  </tr>
+  <tr>
+    <td>
+ <label for="roadTripStops">How many stops would you like to make in total?</label>
+    </td>
+    <td>
+      <input type="number" id="roadTripStops" name="roadTripStops" min="1" max="10" required>
+    </td>
+  </tr>
+</table>
+            
             <button type="button" onclick="getTripInfo()">submit!</button>
           </div>
         </form>
