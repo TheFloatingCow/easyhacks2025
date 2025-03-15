@@ -11,7 +11,7 @@ async function initMap() {
 
     // The map, centered at Vancouver
     map = new Map(document.getElementById("map"), {
-        zoom: 9,
+        zoom: 2,
         center: defaultPosition,
         mapId: "TRIP_PLANNER_ID",
     });
