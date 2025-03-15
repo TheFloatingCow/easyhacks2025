@@ -7,15 +7,16 @@ function getTripInfo (){
     const questions = document.getElementById('questions');
     questions.innerHTML = ''; // Clear previous questions
     if (tripType === 'dayTrip') {
-if (hoursDriven <= 5) {
-const question1 = document.createElement('div');
-question1.className = 'question';
-question1.textContent = 'What activities would you like to do during your day trip?';
-questionsContainer.appendChild(question1);
-} else {
-const question2 = document.createElement('div');
-question2.className = 'question';
-question2.textContent = 'Would you prefer a scenic route or a direct route for your day trip?';
-questionsContainer.appendChild(question2);
+        questions.innerHTML = '<h3>Day Trip</h3>';
+        questions.innerHTML += '<label for="hours">How many hours would you like to drive?</label>';
+        questions.innerHTML += '<input type="number" id="hours" name="dayTripHours" min="1" max="24" required>';
+        questions.innerHTML += '<label for="stops">How many stops would you like to make?</label>';
+        questions.innerHTML += '<input type="number" id="stops" name="dayTripStops" min="1" max="10" required>';
+    }
+    else {
+        questions.innerHTML = '<h3>Road Trip</h3>';
+        questions.innerHTML += '<label for="days">How many days would you like to travel?</label>';
+        questions.innerHTML += '<input type="number" id="days" name="multiDayDays" min="1" max="30" required>';
+
+    }
 }
-  }
