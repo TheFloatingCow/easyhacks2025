@@ -73,29 +73,29 @@ function askDetails() {
   const questions = document.getElementById('questions');
 
   if (drivingSplit === 'yes') {
-    questions.innerHTML += '<label for="hours">How many hours would you like to drive each day?</label>';
-    questions.innerHTML += '<input type="number" id="hours" name="hours" min="1" max="24" required>';
+    questions.innerHTML += '<label for="fixedHours">How many hours would you like to drive each day?</label>';
+    questions.innerHTML += '<input type="number" id="fixedHours" name="fixedHours" min="1" max="24" required>';
     questions.innerHTML += '<br>';
   } else {
     for (let i = 1; i <= days; i++) {
-      questions.innerHTML += '<label for="hours">How many hours would you like to drive on day ' + i + '?</label>';
-      questions.innerHTML += '<input type="number" id="hours" name="hours" min="1" max="24" required>';
+      questions.innerHTML += '<label for="dailyHours">How many hours would you like to drive on day ' + i + '?</label>';
+      questions.innerHTML += '<input type="number" id="dailyHours" name="dailyHours" min="1" max="24" required>';
       questions.innerHTML += '<br>';
     }
   }
   if (stopType === 'variable') {
     for (let i = 1; i <= days; i++) {
-      questions.innerHTML += '<label for="stops">How many stops would you like to make on day ' + i + '?</label>';
-      questions.innerHTML += '<input type="number" id="stops" name="stops" min="1" max="10" required>';
+      questions.innerHTML += '<label for="dailyStops">How many stops would you like to make on day ' + i + '?</label>';
+      questions.innerHTML += '<input type="number" id="dailyStops" name="dailyStops" min="1" max="10" required>';
       questions.innerHTML += '<br>';
     }
   } else if (stopType === 'fixed') {
-    questions.innerHTML += '<label for="stops">How many stops would you like to make each day?</label>';
-    questions.innerHTML += '<input type="number" id="stops" name="stops" min="1" max="10" required>';
+    questions.innerHTML += '<label for="fixedStops">How many stops would you like to make each day?</label>';
+    questions.innerHTML += '<input type="number" id="fixedStops" name="fixedStops" min="1" max="10" required>';
     questions.innerHTML += '<br>';
   } else {
-    questions.innerHTML += '<label for="stops">How many stops would you like to make in total?</label>';
-    questions.innerHTML += '<input type="number" id="stops" name="stops" min="1" max="100" required>';
+    questions.innerHTML += '<label for="totalStops">How many stops would you like to make in total?</label>';
+    questions.innerHTML += '<input type="number" id="totalStops" name="totalStops" min="1" max="100" required>';
     questions.innerHTML += '<br>';
   }
   if (accomodation === 'yes') {
