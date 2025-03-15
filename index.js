@@ -133,7 +133,7 @@ async function initMap() {
         routePolyline = new google.maps.Polyline({
             path: decodedPath,
             geodesic: true,
-            strokeColor: "#4285F4",
+            strokeColor: "#FF007F",
             strokeOpacity: 0.8,
             strokeWeight: 5,
             map: map
