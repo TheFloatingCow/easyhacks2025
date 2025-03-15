@@ -27,11 +27,11 @@ async function initMap() {
     // Create start and end markers
     const startMarker = new google.maps.Marker({
         map: map,
-        draggable: true,
+        //draggable: true,
     });
     const endMarker = new google.maps.Marker({
         map: map,
-        draggable: true,
+        //draggable: true,
     });
 
     // Place start and end markers
