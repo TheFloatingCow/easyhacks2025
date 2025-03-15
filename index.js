@@ -1,29 +1,22 @@
 // Initialize and add the map
 let map;
-let directionsRenderer;
-let directionsService;
+let startMarker, endMarker;
+const apiKey = "YOUR_GOOGLE_MAPS_API_KEY"; // Replace with your actual API key
 
 async function initMap() {
-    // The location of Vancouver
     const defaultPosition = { lat: 49.2827, lng: -123.1207 };
-    // Request needed libraries.
+
+    // Load Google Maps
     //@ts-ignore
     const { Map } = await google.maps.importLibrary("maps");
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-    // The map, centered at Vancouver
     map = new Map(document.getElementById("map"), {
         zoom: 2,
         center: defaultPosition,
         mapId: "TRIP_PLANNER_ID",
-        streetViewControl: false,
     });
 
-    directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
-
-    // Search box element
+    // Search box elements
     const startInput = document.getElementById("startingLocation");
     const endInput = document.getElementById("destination");
 
@@ -31,18 +24,15 @@ async function initMap() {
     const startAutocomplete = new google.maps.places.Autocomplete(startInput);
     const endAutocomplete = new google.maps.places.Autocomplete(endInput);
 
-    // Create start and end markers
-    const startMarker = new google.maps.Marker({
-        map: map,
-        //draggable: true,
-    });
-    const endMarker = new google.maps.Marker({
-        map: map,
-        //draggable: true,
-    });
+    // Create markers
+    startMarker = new google.maps.Marker({ map: map });
+    endMarker = new google.maps.Marker({ map: map });
 
-    // Place start and end markers
-    function placeMarker(autocomplete, marker, isStart) {
+    // Store polyline to display the route
+    let routePolyline = null;
+
+    // Function to place marker and update route
+    function placeMarker(autocomplete, marker) {
         autocomplete.addListener("place_changed", () => {
             const place = autocomplete.getPlace();
             if (!place.geometry) {
@@ -52,15 +42,15 @@ async function initMap() {
             marker.setPosition(place.geometry.location);
             marker.setVisible(true);
             map.setCenter(place.geometry.location);
-            map.setZoom(15);
+            map.setZoom(10);
             fitBounds();
-            calculateAndDisplayRoute();
-        })
+            computeRoute();
+        });
     }
 
-    // Event listeners
-    placeMarker(startAutocomplete, startMarker, true);
-    placeMarker(endAutocomplete, endMarker, false);
+    // Attach event listeners
+    placeMarker(startAutocomplete, startMarker);
+    placeMarker(endAutocomplete, endMarker);
 
     // Adjust map bounds to fit both markers
     function fitBounds() {
@@ -70,54 +60,74 @@ async function initMap() {
         if (!bounds.isEmpty()) map.fitBounds(bounds);
     }
 
-    function calculateAndDisplayRoute() {
+    // Fetch route using Google Routes API
+    async function computeRoute() {
         if (!startMarker.getPosition() || !endMarker.getPosition()) return;
 
-        const request = {
-            origin: startMarker.getPosition(),
-            destination: endMarker.getPosition(),
-            travelMode: google.maps.TravelMode.DRIVING
+        const requestBody = {
+            origin: {
+                location: {
+                    latLng: {
+                        latitude: startMarker.getPosition().lat(),
+                        longitude: startMarker.getPosition().lng()
+                    }
+                }
+            },
+            destination: {
+                location: {
+                    latLng: {
+                        latitude: endMarker.getPosition().lat(),
+                        longitude: endMarker.getPosition().lng()
+                    }
+                }
+            },
+            travelMode: "DRIVE",
+            computeAlternativeRoutes: false
         };
 
-        directionsService.route(request, (result, status) => {
-            if (status === "OK") {
-                directionsRenderer.setDirections(result);
+        try {
+            const response = await fetch(
+                `https://routes.googleapis.com/directions/v2:computeRoutes?key=AIzaSyCxWwT-kAXhrioTvdwVf1YflLJ7yxOdqgs`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-Goog-FieldMask":
+                            "routes.polyline,routes.distanceMeters,routes.duration,routes.legs"
+                    },
+                    body: JSON.stringify(requestBody)
+                }
+            );
+
+            const data = await response.json();
+
+            if (data.routes && data.routes.length > 0) {
+                const route = data.routes[0];
+                drawRoute(route.polyline.encodedPolyline);
             } else {
-                alert("Could not find a route between these locations.");
+                alert("No route found.");
             }
+        } catch (error) {
+            console.error("Error fetching route:", error);
         }
-    );
     }
 
+    // Function to draw polyline on the map
+    function drawRoute(encodedPolyline) {
+        if (routePolyline) {
+            routePolyline.setMap(null); // Remove previous polyline
+        }
 
-    /*
-    // Add marker on click
-    google.maps.event.addListener(map, "click", (event) => {
-        // add Marker
-        addMarker({location:event.latLng});
-    });
-    */
-
-    /*
-    // Add a marker in Vancouver
-    const marker = new AdvancedMarkerElement({
-        map: map,
-        position: defaultPosition,
-        title: "Vancouver",
-    });
-    */
-
-    /*
-    // Add Marker
-    function addMarker(property) {
-        const marker = new AdvancedMarkerElement({
-            position: property.location,
+        const decodedPath = google.maps.geometry.encoding.decodePath(encodedPolyline);
+        routePolyline = new google.maps.Polyline({
+            path: decodedPath,
+            geodesic: true,
+            strokeColor: "#4285F4",
+            strokeOpacity: 0.8,
+            strokeWeight: 5,
             map: map
         });
     }
-    */
-
-    //addMarker({location:{ lat: 49.2827, lng: -123.1207 }});
 }
 
 initMap();
