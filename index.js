@@ -153,7 +153,7 @@ async function initMap() {
 
     // Add marker
     function addPlaceMarker(place) {
-        new google.maps.Marker({
+        const marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location,
             title: place.name,
@@ -161,6 +161,14 @@ async function initMap() {
                 url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
             }
         });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: "<strong>" + place.name + "</strong>",
+        });
+
+        marker.addListener("click", () => {
+            infoWindow.open(map, marker);
+        })
 
         console.log("Added place:", place.name);
     }
