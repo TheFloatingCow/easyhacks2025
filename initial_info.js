@@ -27,7 +27,7 @@ function askDayTripInfo() {
   questions.innerHTML += '<input type="number" id="stops" name="dayTripStops" min="1" max="10" required>';
   questions.innerHTML += '<br>';
   // submit button
-  questions.innerHTML += '<button type="button" onclick="getDayTripInfo()">next!</button>';
+  questions.innerHTML += '<button type="button" onclick="getDayTripInfo()">submit!</button>';
 
 }
 
@@ -44,29 +44,37 @@ function askRoadTripInfo() {
   questions.innerHTML += '<label for="days">How many days would you like to travel?</label>';
   questions.innerHTML += '<input type="number" id="days" name="days" min="1" max="30" required>';
   questions.innerHTML += '<br>';
-  // accomodation verification
-  questions.innerHTML += '<label for="accomodation">Do you have accomodation booked for your trip?</label>';
-  questions.innerHTML += '<select id="accomodation" name="accomodation" required><option value="">--Choose an Option--</option><option value="yes">Yes</option><option value="no">No</option></select>';
-  questions.innerHTML += '<br>';
-  // driving split
-  questions.innerHTML += '<label for="drivingSplit">Would you like to drive the same amount everyday?</label>';
-  questions.innerHTML += '<select id="drivingSplit" name="drivingSplit" required><option value="">--Choose an Option--</option><option value="yes">Yes</option><option value="no">No</option></select>';
+  // # of hours to drive
+  questions.innerHTML += '<label for="hours">How many hours would you like to drive per day?</label>';
+  questions.innerHTML += '<input type="number" id="hours" name="dayTripHours" min="1" max="24" required>';
   questions.innerHTML += '<br>';
   // # of stops
-  questions.innerHTML += '<label for="stopType">How would you like to plan your stops during the road trip?</label>';
-  questions.innerHTML += '<select id="stopType" name="stopType" required> <option value="">--Choose an Option--</option> <option value="variable">A different number of stops each day.</option><option value="fixed"> The same number of stops every day</option><option value="total">A total number of stops in the whole trip</option></select>';
+  questions.innerHTML += '<label for="stops">How many stops would you like to make in total?</label>';
+  questions.innerHTML += '<input type="number" id="stops" name="dayTripStops" min="1" max="10" required>';
   questions.innerHTML += '<br>';
+  // accomodation verification
+  //questions.innerHTML += '<label for="accomodation">Do you have accomodation booked for your trip?</label>';
+  //questions.innerHTML += '<select id="accomodation" name="accomodation" required><option value="">--Choose an Option--</option><option value="yes">Yes</option><option value="no">No</option></select>';
+  //questions.innerHTML += '<br>';
+  // driving split
+  //questions.innerHTML += '<label for="drivingSplit">Would you like to drive the same amount everyday?</label>';
+  //questions.innerHTML += '<select id="drivingSplit" name="drivingSplit" required><option value="">--Choose an Option--</option><option value="yes">Yes</option><option value="no">No</option></select>';
+  //questions.innerHTML += '<br>';
+  // # of stops
+  //questions.innerHTML += '<label for="stopType">How would you like to plan your stops during the road trip?</label>';
+  //questions.innerHTML += '<select id="stopType" name="stopType" required> <option value="">--Choose an Option--</option> <option value="variable">A different number of stops each day.</option><option value="fixed"> The same number of stops every day</option><option value="total">A total number of stops in the whole trip</option></select>';
+  //questions.innerHTML += '<br>';
   // submit button
-  questions.innerHTML += '<button type="button" onclick="getRoadTripInfo()">next!</button>';
+  questions.innerHTML += '<button type="button" onclick="getRoadTripInfo()">submit!</button>';
 
 }
 
 function getRoadTripInfo() {
   const days = document.getElementById('days').value;
-  const accomodation = document.getElementById('accomodation').value;
-  const drivingSplit = document.getElementById('drivingSplit').value;
-  const stopType = document.getElementById('stopType').value;
-  askDetails();
+  //const accomodation = document.getElementById('accomodation').value;
+  //const drivingSplit = document.getElementById('drivingSplit').value;
+  //const stopType = document.getElementById('stopType').value;
+  //askDetails();
 }
 
 function askDetails() {
