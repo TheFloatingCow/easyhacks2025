@@ -104,6 +104,11 @@ async function initMap() {
             if (data.routes && data.routes.length > 0) {
                 const route = data.routes[0];
                 drawRoute(route.polyline.encodedPolyline);
+
+                // Extract and display travel time
+                const travelTime = route.duration;
+                console.log("Travel Time Object:", travelTime); // Log the duration object
+                displayTravelTime(travelTime);
             } else {
                 alert("No route found.");
             }
@@ -127,6 +132,12 @@ async function initMap() {
             strokeWeight: 5,
             map: map
         });
+    }
+
+    // Function to display travel time on the webpage
+    function displayTravelTime(duration) {
+        const travelTimeElement = document.getElementById("travelTime");
+        travelTimeElement.textContent = `Travel Time: ${duration.text || duration}`; // Access the correct property
     }
 }
 
